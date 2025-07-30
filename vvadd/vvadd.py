@@ -38,17 +38,8 @@ print("\033[92mResults are correct! ✅\033[0m")
 import allo.backend.hls as hls
 print(hls.is_available("pynq"))
 
-#s.reorder("k", "j")
-#s.buffer_at(s.C, axis="i")
-
-#mod = s.build(target="vitis_hls", mode="csyn", project="baseline.prj")
-#mod()
-
 s.unroll("i", factor=128)
-#s.pipeline("i")
 
-
-print(s.module)
-mod = s.build(target="pynq", mode="csyn", project="unroll.prj")
+mod = s.build(target="pynq", mode="csyn", project="vvadd.prj", configs={"device":"ultra96v2"})
 mod()
 
